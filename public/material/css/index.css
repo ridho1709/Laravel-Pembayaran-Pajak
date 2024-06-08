@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* background-size: cover;
+  background-image: url(assets.css/img.jpg); */
+
+  background: linear-gradient(-45deg, #2deed1, #32b8ea, #32b8ea, #44e82e);
+  background-size: 400% 400%;
+  animation: gradient 4s ease infinite;
+  height: 100vh;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 100px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.navbar a {
+  /* display: flexbox; */
+  flex-direction: row-reverse;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  margin-left: 35px;
+  transition: 0.3s;
+}
+.navbar a:hover {
+  color: #efc443;
+  text-decoration: underline;
+}
+.header .navbutton .btnlogin {
+  width: 130px;
+  height: 40px;
+  top: 0;
+  left: 0;
+  font-weight: 500;
+  background: #efc443;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.header .navbutton .btnlogin:hover {
+  opacity: 0.7;
+}
+.picture {
+  /* position: relative; */
+  width: 300px;
+  height: 280px;
+  position: fixed;
+  margin-top: 9rem;
+  transform: translateY(-50%);
+  text-align: center;
+}
+.header h2 {
+  color: #fff;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.header h2 i {
+  /* margin-right: 450px; */
+  color: #efc443;
+  font-size: 35px;
+}
+.content {
+  width: 100%;
+  position: relative;
+  top: 30%;
+  text-align: center;
+  color: #fff;
+}
+.content h1 {
+  font-family: "Nunito", sans-serif;
+  font-size: 70px;
+  margin-bottom: 0;
+}
+.content p {
+  margin: 0;
+  font-size: 20px;
+  line-height: 25px;
+}
+.content .btn {
+  width: 20%;
+  height: 40px;
+  background: #efc443;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 50px;
+  text-align: center;
+  top: 80%;
+  transition: 0.2s;
+}
+.content .btn:hover {
+  opacity: 0.7;
+}
+.header .menu {
+  font-size: 35px;
+  color: #fff;
+  padding-left: 20px;
+  margin-top: 4px;
+  display: none;
+}
+#blog {
+  width: 90%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 95rem;
+  padding: 40px;
+  border-bottom: 10px rgba(0, 0, 0, 0.05);
+  background-color: transparent;
+  backdrop-filter: blur(50px);
+  border-radius: 30px;
+}
+.blog-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.blog-heading h3 {
+  color: #fff;
+  font-size: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+}
+.blog-heading h3 i {
+  color: #efc443;
+  font-size: 45px;
+}
+.blog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0px;
+  flex-wrap: wrap;
+}
+.blog-box {
+  width: 350px;
+  background-color: #fff;
+  border: 1px solid #ececec;
+  margin: 15px;
+}
+.blog-img {
+  width: 100%;
+  height: auto;
+}
+.blog-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.blog-text {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.blog-text span {
+  color: #efc443;
+  font-size: 0.9rem;
+}
+.blog-text .blog-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #272727;
+}
+.blog-text .blog-title:hover {
+  color: #efc443;
+  transition: all ease 0.3s;
+}
+.blog-text p {
+  color: #9b9b9b;
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-box-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 20px 0px;
+}
+.blog-text a {
+  color: #0f0f0f;
+}
+.blog-text a:hover {
+  color: #efc443;
+  transition: all ease 0.3ms;
+}
+@media (width <750px) {
+  .navbar a {
+    display: none;
+    flex-direction: column; 
+  }
+  .header .menu {
+    display: block;
+  }
+  .header {
+    padding: 10px 30px;
+  }
+  .header h2 {
+    font-size: 15px;
+  }
+  .header h2 i {
+    margin-right: 90px;
+    color: #efc443;
+    font-size: 20px;
+  }
+  .header .navbutton .btnlogin {
+    width: 100px;
+    height: 30px;
+  }
+  .picture {
+    width: 250px;
+    height: 230px;
+    margin-top: 10px;
+    transform: translateY(-40%);
+  }
+  .content {
+    width: 90%;
+    top: 20%;
+    position: relative;
+    text-align: center;
+    margin-top: 30px;
+    color: #fff;
+  }
+  .content h1 {
+    font-family: "Nunito", sans-serif;
+    font-size: 27px;
+    margin-bottom: 0;
+  }
+  .content p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .content .btn {
+    width: 45%;
+    height: 35px;
+    font-size: 12px;
+    padding: 2px;
+  }
+}  
