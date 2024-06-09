@@ -55,29 +55,21 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-          <a class="nav-link" href="dashboard.php">
+          <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a
           >
         </li>
-        
-        <li class="nav-item ">
-          <a class="nav-link" href="account-manage.php">
-          <i class="fas fa-regular fa-users"></i>
-            <span>Account Manage</span></a
-          >
-        </li>
-
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-          <a class="nav-link" href="/transaction-manage">
+          <a class="nav-link" href="/transaction">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a
           >
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="billings-manage.php">
+          <a class="nav-link" href="#">
           <i class="fas fa-solid fa-receipt"></i>
             <span>Billings</span></a>
         </li>
@@ -478,11 +470,5 @@
     <!-- Page level custom scripts -->
     <script src="material/js/demo/chart-area-demo.js"></script>
     <script src="material/js/demo/chart-pie-demo.js"></script>
-    
-
-    <!-- <script>
-      var dt = new Date();
-      document.getElementById("date").innerHTML = dt.toLocaleString();
-    </script> -->
   </body>
 </html>

@@ -49,15 +49,6 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-
-            <li class="nav-item ">
-          <a class="nav-link" href="account-manage.php">
-          <i class="fas fa-regular fa-users"></i>
-            <span>Account Manage</span></a
-          >
-        </li>
-            
-
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
                 <a class="nav-link" href="tables.php">
@@ -324,115 +315,88 @@
                                             <th>Total</th>
                                             <th>Action</th>
                                         </tr>
+                                        @foreach($transactions as $transaction)
                                     </thead>
                                     
                                     <tbody>
-                                            <div class="modal fade" id="popupdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                             <div class="modal-dialog modal-lg">
-                                                 <div class="modal-content">
-                                                        <div class="modal-header text-body">
-                                                         <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
-                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                             <span aria-hidden="true">&times;</span>
-                                                         </button>
-                                                    </div>
-                                                <div class="modal-body text-body">
-<form action="crud/update-proses.php" method="post">
-<input type="hidden" name="id" value="" />
-  <div class="form-group">
-    <label for="npwp">NPWP</label>
-    <input
-      type="number"
-      class="form-control"
-      name="npwp"
-      id="npwp"
-      aria-describedby="emailHelp"
-      required
-    />
-  </div>
-  <div class="form-group">
-    <label for="nama">Nama Lengkap</label>
-    <input
-      type="text"
-      class="form-control"
-      name="nama"
-      id="nama"
-      
-      aria-describedby="namehelp"
-      required
-    />
-  </div>
-  <div class="form-group">
-    <label for="jenis_usaha">Jenis Usaha</label>
-    <input
-      type="text"
-      class="form-control"
-      name="jenis_usaha"
-      id="jenis_usaha"
-      aria-describedby="usahaHelp"
-      required
-    />
-  </div>
-  <div class="form-group">
-    <label for="jenis_pajak">Jenis Pajak</label>
-    <select class="form-control" id="jenis_pajak" name="jenis_pajak" required>
-      <option></option>
-      <option value="Bangunan">Bangunan</option>
-      <option value="Kendaraan">Kendaraan</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Alamat</label>
-    <textarea
-      class="form-control"
-      name="alamat"
-      id="exampleFormControlTextarea1"
-      rows="3"
-    ></textarea
-    >
-  </div>
-  <div class="form-group">
-    <label for="telpon">No Telpon</label>
-    <input
-      type="number"
-      class="form-control"
-      name="telpon"
-      id="telpon"
-      aria-describedby="telponHelp"
-      required
-    />
-  </div>
-  <div class="form-group">
-    <label for="tanggal">Tanggal</label>
-    <input
-      type="date"
-      class="form-control"
-      name="tanggal"
-      id="tanggal"
-      aria-describedby="emailHelp"
-      required
-    />
-  </div>
-  <div class="form-group">
-    <label for="total">Total</label>
-    <input
-      type="text"
-      class="form-control"
-      name="total"
-      id="total"
-      aria-describedby="emailHelp"
-      required
-    />
-  </div>
-  <div class="modal-footer">
-    <button type="submit" class="btn btn-primary" name="update">Save</button>
-  </div>
-</form>
 
-                    </div>
-                </div>
-            </div>
-        </div>
+                                        <tr>
+                                            <td>{{ $transaction->id }}</td>
+                                            <td>{{ $transaction->npwp }}</td>
+                                            <td>{{ $transaction->nama }}</td>
+                                            <td>{{ $transaction->jenis_usaha }}</td>
+                                            <td>{{ $transaction->jenis_pajak }}</td>
+                                            <td>{{ $transaction->alamat }}</td>
+                                            <td>{{ $transaction->no_tlpn }}</td>
+                                            <td>{{ $transaction->tanggal }}</td>
+                                            <td>{{ $transaction->total }}</td>
+                                            
+                                            <td>
+                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal" data-transaction="{{ json_encode($transaction) }}">Edit</button>
+                                                <button type="button" class="btn btn-danger delete-button" data-id="{{ $transaction->id }}">Delete</button>
+                                                
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                        
+                                    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header text-body">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-body">
+                                                    <form action="{{ route('transaction.update') }}" method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="id" id="id" value="" />
+                                                        <div class="form-group">
+                                                            <label for="npwp">NPWP</label>
+                                                            <input type="number" class="form-control" name="npwp" id="npwp" required />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="nama">Nama Lengkap</label>
+                                                            <input type="text" class="form-control" name="nama" id="nama" required />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="jenis_usaha">Jenis Usaha</label>
+                                                            <input type="text" class="form-control" name="jenis_usaha" id="jenis_usaha" required />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="jenis_pajak">Jenis Pajak</label>
+                                                            <select class="form-control" id="jenis_pajak" name="jenis_pajak" required>
+                                                                <option></option>
+                                                                <option value="Bangunan">Bangunan</option>
+                                                                <option value="Kendaraan">Kendaraan</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="alamat">Alamat</label>
+                                                            <textarea class="form-control" name="alamat" id="alamat" rows="3"></textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="no_tlpn">No Telpon</label>
+                                                            <input type="number" class="form-control" name="no_tlpn" id="no_tlpn" required />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="tanggal">Tanggal</label>
+                                                            <input type="date" class="form-control" name="tanggal" id="tanggal" required />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="total">Total</label>
+                                                            <input type="text" class="form-control" name="total" id="total" required />
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary" name="update">Save</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
    
 </tbody>
 </tbody>                                        
@@ -511,6 +475,66 @@
 
     <!-- Page level custom scripts -->
     <script src="material/js/demo/datatables-demo.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $('#editModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var transaction = button.data('transaction');
+        
+                var modal = $(this);
+                modal.find('.modal-body #id').val(transaction.id);
+                modal.find('.modal-body #npwp').val(transaction.npwp);
+                modal.find('.modal-body #nama').val(transaction.nama);
+                modal.find('.modal-body #jenis_usaha').val(transaction.jenis_usaha);
+                modal.find('.modal-body #jenis_pajak').val(transaction.jenis_pajak);
+                modal.find('.modal-body #alamat').val(transaction.alamat);
+                modal.find('.modal-body #no_tlpn').val(transaction.no_tlpn);
+                modal.find('.modal-body #tanggal').val(transaction.tanggal);
+                modal.find('.modal-body #total').val(transaction.total);
+            });
+        });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                $('#editModal').on('show.bs.modal', function (event) {
+                    var button = $(event.relatedTarget);
+                    var transaction = button.data('transaction');
+        
+                    var modal = $(this);
+                    modal.find('.modal-body #id').val(transaction.id);
+                    modal.find('.modal-body #npwp').val(transaction.npwp);
+                    modal.find('.modal-body #nama').val(transaction.nama);
+                    modal.find('.modal-body #jenis_usaha').val(transaction.jenis_usaha);
+                    modal.find('.modal-body #jenis_pajak').val(transaction.jenis_pajak);
+                    modal.find('.modal-body #alamat').val(transaction.alamat);
+                    modal.find('.modal-body #no_tlpn').val(transaction.no_tlpn);
+                    modal.find('.modal-body #tanggal').val(transaction.tanggal);
+                    modal.find('.modal-body #total').val(transaction.total);
+                });
+        
+                // Fungsi untuk menghapus transaksi
+                $('.delete-button').on('click', function () {
+                    var transactionId = $(this).data('id');
+                    if (confirm('Apakah Anda yakin ingin menghapus transaksi ini?')) {
+                        $.ajax({
+                            url: '/transactions/' + transactionId,
+                            type: 'DELETE',
+                            data: {
+                                _token: '{{ csrf_token() }}' // Token CSRF Laravel untuk keamanan
+                            },
+                            success: function(response) {
+                                alert('Transaksi berhasil dihapus.');
+                                location.reload(); // Muat ulang halaman setelah penghapusan
+                            },
+                            error: function(xhr) {
+                                alert('Terjadi kesalahan saat menghapus transaksi.');
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+        
 
 </body>
 

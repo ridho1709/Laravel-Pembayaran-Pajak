@@ -14,10 +14,21 @@
 </head>
 <body>
 <div class="container">
-    <div class="card" style="margin-top: 20rem; margin-bottom: 2rem">
+    <div class="card" style="margin-top: 25rem; margin-bottom: 5rem">
         <div class="card-header"><b>Form Transaksi</b></div>
         <div class="card-body">
-            <form action="" method="post">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+
+                    </ul>
+                </div>
+            @endif
+            <form action="{{ route('transaction.store') }}" method="post">
+                @csrf
                 <div class="form-group">
                     <label for="npwp">NPWP</label>
                     <input type="number" class="form-control" name="npwp" id="npwp" aria-describedby="emailHelp" required />
@@ -40,11 +51,11 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Alamat</label>
-                    
+                    <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="telpon">No Telpon</label>
-                    <input type="number" class="form-control" name="telpon" id="telpon" aria-describedby="telponHelp" required />
+                    <input type="number" class="form-control" name="no_tlpn" id="no_tlpn" aria-describedby="telponHelp" required />
                 </div>
                 <div class="form-group">
                     <label for="tanggal">Tanggal</label>
@@ -74,12 +85,5 @@
 </header>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="js/swipper.js"></script>
-<?php if (isset($_GET['success']) && $_GET['success'] == 'true'): ?>
-<script>
-    alert("Data Berhasil Di input");
-    window.history.replaceState(null, null, window.location.pathname);
-    window.location.href = "billings.php";
-</script>
-<?php endif; ?>
 </body>
 </html>

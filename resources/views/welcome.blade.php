@@ -28,7 +28,7 @@
         Website yang menyediakan berbagai jenis pembayaran pajak hanya dengan 1
         klik
       </p>
-      <a href="create.php">
+      <a href="/create">
         <button type="button" class="btn">
           <b>Ayo Bayar Pajak!!</b>
         </button>

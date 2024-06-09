@@ -49,16 +49,7 @@
                 <a class="nav-link" href="dashboard.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
-            </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="account-manage.php">
-          <i class="fas fa-regular fa-users"></i>
-            <span>Account Manage</span></a
-          >
-        </li>
-            
-
+            </li>   
             <!-- Nav Item - Tables -->
             <li class="nav-item ">
                 <a class="nav-link" href="tabels.php">
@@ -266,7 +257,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username']; ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ridho</span>
                                 <img class="img-profile rounded-circle"
                                 src="material/img/undraw_profile.svg">  
                             </a>
@@ -325,19 +316,14 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                          <?php $no = 1;?>
-                                          <?php foreach ($billing as $row) : ?>
-                                          <td><?=$no;?></td>
-                                          <td><?= $row["nama"]; ?></td>
-                                          <td><?= $row["tanggal_pembayaran"]; ?></td>
-                                          <td><?= $row["jenis_pajak"]; ?></td>
-                                          <td><?= $row["jenis_pembayaran"]; ?></td>
-                                          <td>Rp. <?= number_format($row["total"]); ?></td>
-                                          <td><a href="sucess.php?id_billings=<?= $row["id_billings"] ?>"><button type="button" class="btn btn-success">Success</button></td></a>
-                                            
+                                            <td>1</td>
+                                            <td>John Doe</td>
+                                            <td>01/01/2021</td>
+                                            <td>Pajak Bangunan</td>
+                                            <td>Transfer</td>
+                                            <td>Rp. 1.000.000</td>
+                                            <td>Lunas</td>
                                         </tr>
-                                        <?php $no++?>
-                                        <?php endforeach;?>
                                     </tbody>
                                 </table>
                             </div>
