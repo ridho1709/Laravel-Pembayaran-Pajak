@@ -51,13 +51,13 @@
             </li>
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="tables.php">
+                <a class="nav-link" href="/transaction">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li>
 
             <li class="nav-item">
-          <a class="nav-link" href="billings-manage.php">
+          <a class="nav-link" href="/billings">
           <i class="fas fa-solid fa-receipt"></i>
             <span>Billings</span></a>
         </li>
@@ -300,7 +300,6 @@
                         <div class="card-body">
                         <h5  id="date" class="mb-3"></h5>
                             <div class="table-responsive">
-                                
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -315,13 +314,13 @@
                                             <th>Total</th>
                                             <th>Action</th>
                                         </tr>
-                                        @foreach($transactions as $transaction)
+                                        @foreach($transactions as $index=> $transaction)
                                     </thead>
                                     
                                     <tbody>
 
                                         <tr>
-                                            <td>{{ $transaction->id }}</td>
+                                            <td>{{ $index + 1 }}</td>
                                             <td>{{ $transaction->npwp }}</td>
                                             <td>{{ $transaction->nama }}</td>
                                             <td>{{ $transaction->jenis_usaha }}</td>
@@ -329,12 +328,10 @@
                                             <td>{{ $transaction->alamat }}</td>
                                             <td>{{ $transaction->no_tlpn }}</td>
                                             <td>{{ $transaction->tanggal }}</td>
-                                            <td>{{ $transaction->total }}</td>
+                                            <td>RP. {{ number_format(floatval($transaction->total), 2, '.', '.') }}</td>
                                             
                                             <td>
-                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal" data-transaction="{{ json_encode($transaction) }}">Edit</button>
-                                                <button type="button" class="btn btn-danger delete-button" data-id="{{ $transaction->id }}">Delete</button>
-                                                
+                                                <a href="" class="text-warning" data-toggle="modal" data-target="#editModal" data-transaction="{{ json_encode($transaction) }}">Edit</a> | <a href="" class="text-danger delete-button" data-id="{{ $transaction->id }}">Delete</a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -402,9 +399,7 @@
 </tbody>                                        
 
 </table>
-                                <a href="print.php" target="_blank" class="">
-                                    <button type="button" class="btn btn-primary mb-0">Cetak Document</button>
-                                </a>
+                                
 </div>
 
 </div>

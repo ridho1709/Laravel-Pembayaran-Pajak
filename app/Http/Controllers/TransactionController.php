@@ -46,7 +46,7 @@ class TransactionController extends Controller
         $transaction->tanggal = $request->tanggal;
         $transaction->total = $request->total;
         $transaction->save();
-        return redirect()->route('welcome')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('billings.billing-create')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     function edit($id)
@@ -79,5 +79,4 @@ class TransactionController extends Controller
         return response()->json(['message' => 'Transaksi tidak ditemukan.'], 404);
     }
 }
-
 }

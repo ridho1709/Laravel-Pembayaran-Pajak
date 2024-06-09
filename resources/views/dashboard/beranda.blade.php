@@ -69,7 +69,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/billings">
           <i class="fas fa-solid fa-receipt"></i>
             <span>Billings</span></a>
         </li>

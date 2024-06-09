@@ -46,19 +46,19 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="dashboard.php">
+                <a class="nav-link" href="/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>   
             <!-- Nav Item - Tables -->
             <li class="nav-item ">
-                <a class="nav-link" href="tabels.php">
+                <a class="nav-link" href="/transaction">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li>
 
             <li class="nav-item active">
-          <a class="nav-link" href="billings-manage.php">
+          <a class="nav-link" href="/billings">
           <i class="fas fa-solid fa-receipt"></i>
             <span>Billings</span></a>
         </li>
@@ -313,19 +313,24 @@
                                             <th>Total</th>
                                             <th>Status</th>
                                         </tr>
+                                        @foreach($billings as $index => $billing)
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>1</td>
-                                            <td>John Doe</td>
-                                            <td>01/01/2021</td>
-                                            <td>Pajak Bangunan</td>
-                                            <td>Transfer</td>
-                                            <td>Rp. 1.000.000</td>
-                                            <td>Lunas</td>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $billing->nama }}</td>
+                                            <td>{{ $billing->tanggal }}</td>
+                                            <td>{{ $billing->jenis_pajak }}</td>
+                                            <td>{{ $billing->jenis_pembayaran }}</td>
+                                            <td>RP. {{ number_format(floatval($billing->total), 2, '.', '.') }}</td>
+                                            <td class="text-success">Lunas</td>
                                         </tr>
                                     </tbody>
+                                    @endforeach
                                 </table>
+                                <a href="{{ route('dashboard.print') }}" target="_blank" class="">
+                                    <button type="button" class="btn btn-primary mb-0">Cetak Document</button>
+                                </a>
                             </div>
                         </div>
                     </div>
