@@ -35,6 +35,7 @@
              <th>Tanggal Pembayaran</th>
              <th>Jenis Pajak</th>
              <th>Jenis Pembayaran</th>
+             <th>No Telpon</th>
              <th>Total</th>
              <th>Status</th>
          </tr>@foreach($billings as $index => $billing)
@@ -44,6 +45,7 @@
                 <td>{{ $billing->tanggal }}</td>
                 <td>{{ $billing->jenis_pajak }}</td>
                 <td>{{ $billing->jenis_pembayaran }}</td>
+                <td>{{ $billing->no_tlpn }}</td>
                 <td>RP. {{ number_format(floatval($billing->total), 2, '.', '.') }}</td>
                 <td class="text">Lunas</td>
             </tr>

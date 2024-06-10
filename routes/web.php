@@ -33,8 +33,6 @@ Route::get('/billing-create',[BillingController::class,'create'])->name('billing
 Route::post('/billing-store',[BillingController::class,'store'])->name('billings.store');
 Route::get('/billings/print', [BillingController::class, 'printpdf'])->name('dashboard.print');
 
-// Mpdf Route
-// Route::get('/print',[MpdfController::class,'generatePDF'])->name('print');
 
 // Dashboard Route
 Route::get('/dashboard',function(){
